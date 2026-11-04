@@ -1,0 +1,21 @@
+{
+  "name": "khong-doan-khi-nhieu-cach-sua",
+  "source": "synthetic",
+  "note": "Hai số giống nhau, tổng lệch → có nhiều cách sửa như nhau, parser KHÔNG được đoán (để người dùng đối chiếu ảnh).",
+  "now": "2026-10-17",
+  "rawText": "Ngày 17/10/2026\nTổng: 32\n>0 - 2 kg\n13 Đơn\n>2 - 4 kg\n13 Đơn",
+  "expected": {
+    "weights": {
+      "0_2": 13,
+      "2_4": 13,
+      "4_6": 0,
+      "6_8": 0,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 32,
+    "date": "2026-10-17"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "dong-ngay-gach-ngang-khong-phai-dai-can",
+  "source": "synthetic",
+  "note": "\"06-10-2026\" từng bị coi là dải cân 6–10 làm lệch số liệu.",
+  "now": "2026-10-17",
+  "rawText": "06-10-2026\nTổng: 15\n>0 - 2 kg\n10 Đơn\n>2 - 4 kg\n5 Đơn",
+  "expected": {
+    "weights": {
+      "0_2": 10,
+      "2_4": 5,
+      "4_6": 0,
+      "6_8": 0,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 15,
+    "date": "2026-10-06"
+  }
+}

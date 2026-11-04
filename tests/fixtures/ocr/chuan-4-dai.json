@@ -1,0 +1,21 @@
+{
+  "name": "chuan-4-dai",
+  "source": "synthetic",
+  "note": "Bố cục chuẩn: tiêu đề tab, ngày đầy đủ, Tổng, mỗi dải một dòng và số đơn ngay dưới.",
+  "now": "2026-10-17",
+  "rawText": "Giao hàng   Lấy hàng   Hoàn\nNgày 17/10/2026\nTổng: 100\n>0 - 2 kg\n60 Đơn\n>2 - 4 kg\n25 Đơn\n>4 - 6 kg\n10 Đơn\n>6 - 8 kg\n5 Đơn",
+  "expected": {
+    "weights": {
+      "0_2": 60,
+      "2_4": 25,
+      "4_6": 10,
+      "6_8": 5,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 100,
+    "date": "2026-10-17"
+  }
+}

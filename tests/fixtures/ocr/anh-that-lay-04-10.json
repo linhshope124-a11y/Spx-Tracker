@@ -1,0 +1,21 @@
+{
+  "name": "anh-that-lay-04-10",
+  "source": "real-image",
+  "note": "Văn bản OCR do Tesseract 5.3 ngôn ngữ 'eng' (máy dev, ảnh gốc phóng 2×) — app dùng 'vie' nên mất dấu tiếng Việt (Tổng→T6ng, Đơn→Don); đáp án đọc bằng mắt từ ảnh. Ảnh: tests/fixtures/ocr-images/spx-lay-04-10.jpg",
+  "now": "2026-10-25",
+  "rawText": "15:43 & 0 © ws! 456 &\n< Chi tiét don theo ngay - 04/10\nDa giaohang Dalay Datrahang\nTat caNhomcannang v\nT6ng 53 don hang\nKhoi luong (kg)\n52 Don he\n0.000 - 2.001 on nang\nKhoi luong (kg)\n1 Don he\n8.001 - 10.001 ena",
+  "expected": {
+    "weights": {
+      "0_2": 52,
+      "2_4": 0,
+      "4_6": 0,
+      "6_8": 0,
+      "8_10": 1,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 53,
+    "date": "2026-10-04"
+  }
+}

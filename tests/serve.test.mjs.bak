@@ -1,0 +1,50 @@
+// scripts/serve.mjs — máy chủ tĩnh dùng cho npm run serve / e2e.
+import test, { before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import http from 'node:http';
+import path from 'node:path';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const PORT = 45000 + Math.floor(Math.random() * 1000);
+let child;
+
+const get = (rawPath) => new Promise((resolve, reject) => {
+  http.get({ host: '127.0.0.1', port: PORT, path: rawPath }, res => {
+    let body = ''; res.on('data', c => body += c); res.on('end', () => resolve({ status: res.statusCode, headers: res.headers, body }));
+  }).on('error', reject);
+});
+
+before(async () => {
+  child = spawn(process.execPath, [path.join(root, 'scripts/serve.mjs')], { env: { ...process.env, PORT: String(PORT) }, stdio: 'pipe' });
+  await new Promise((res, rej) => { child.stdout.on('data', d => /http:\/\/localhost/.test(String(d)) && res()); child.on('error', rej); setTimeout(() => rej(new Error('server không khởi động')), 8000); });
+});
+after(() => child && child.kill());
+
+test('phục vụ trang chủ, JS đúng MIME (module), không cache', async () => {
+  const idx = await get('/');
+  assert.equal(idx.status, 200);
+  assert.match(idx.headers['content-type'], /text\/html/);
+  assert.match(idx.body, /spx-app-version/);
+  assert.equal(idx.headers['cache-control'], 'no-store');
+  const js = await get('/js/main.js');
+  assert.equal(js.status, 200);
+  assert.match(js.headers['content-type'], /text\/javascript/);
+  const manifest = await get('/manifest.json');
+  assert.match(manifest.headers['content-type'], /json/);
+});
+
+test('sw.js có header service-worker-allowed; file không tồn tại → 404', async () => {
+  assert.equal((await get('/sw.js')).headers['service-worker-allowed'], '/');
+  assert.equal((await get('/khong-co-file.js')).status, 404);
+});
+
+test('chặn đi lên thư mục cha (path traversal) → 403, không lộ file ngoài thư mục gốc', async () => {
+  for (const p of ['/..%2f..%2fetc%2fpasswd', '/%2e%2e/%2e%2e/etc/passwd', '/js/..%2f..%2f..%2fetc%2fpasswd']) {
+    const r = await get(p);
+    assert.ok([403, 404].includes(r.status), `${p} → ${r.status}`);
+    assert.ok(!/root:/.test(r.body), p);
+  }
+  assert.equal((await get('/..%2fpackage.json')).status === 200 && /"spx-tracker"/.test((await get('/..%2fpackage.json')).body), false);
+});

@@ -1,0 +1,21 @@
+{
+  "name": "so-1-doc-thanh-I-va-dau",
+  "source": "synthetic",
+  "note": "OCR đọc chữ số 1 thành Ì / ¡ (đã gặp trên ảnh thật theo comment trong parser).",
+  "now": "2026-10-17",
+  "rawText": "Ngày 17/10/2026\nTổng: 25\n>0 - 2 kg\nÌ5 Đơn\n>2 - 4 kg\n¡0 Đơn",
+  "expected": {
+    "weights": {
+      "0_2": 15,
+      "2_4": 10,
+      "4_6": 0,
+      "6_8": 0,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 25,
+    "date": "2026-10-17"
+  }
+}

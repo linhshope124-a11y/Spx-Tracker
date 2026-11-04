@@ -1,0 +1,13 @@
+{
+  "name": "anh-that-giao-02-10-so-bi-doc-hong",
+  "source": "real-image",
+  "note": "Văn bản OCR do Tesseract 5.3 ngôn ngữ 'eng' (máy dev, ảnh gốc phóng 2×) — app dùng 'vie' nên mất dấu tiếng Việt (Tổng→T6ng, Đơn→Don); đáp án đọc bằng mắt từ ảnh. Hai thẻ đầu (101 và 8 đơn) bị đọc hỏng hoàn toàn → parser không được cho kết quả trông như đã khớp Tổng 119. Đáp án đúng đọc từ ảnh: 0_2=101, 2_4=8, 4_6=4, 6_8=2, 8_10=3, over_15=1. Ảnh: tests/fixtures/ocr-images/spx-giao-02-10.jpg",
+  "now": "2026-10-25",
+  "rawText": "15:43 © 0 © Po tl 45G &)\n< Chi tiét don theo ngay - 02/10\nDa giaohang Dalay Datrahang\nTat caNhomcannang v\nT6ng 119 don hang\nKhoi luong (kg) :\n0.000 - 2.001 WOT Bom nang\nKhoi luong (kg) .\n2.001 - 4.001 a Pen Nang ¥\nKhoi luong (kg)\nA Don he\n4.001 - 6.001 en Hem) ~\nKhoi luong (kg)\n2 Don he\n6.001 - 8.001 ON eri ~\nKhoi luong (kg)\n3 Don hé\n8.001 - 10.001 nnang\nKhoi luong (kg)\n1 Don han\n15.001 - 999999.000 oY",
+  "safety": "must-not-verify",
+  "expected": {
+    "weights": null,
+    "total": 119,
+    "date": "2026-10-02"
+  }
+}

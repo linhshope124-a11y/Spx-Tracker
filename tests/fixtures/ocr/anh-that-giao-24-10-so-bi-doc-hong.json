@@ -1,0 +1,13 @@
+{
+  "name": "anh-that-giao-24-10-so-bi-doc-hong",
+  "source": "real-image",
+  "note": "Văn bản OCR do Tesseract 5.3 ngôn ngữ 'eng' (máy dev, ảnh gốc phóng 2×) — app dùng 'vie' nên mất dấu tiếng Việt (Tổng→T6ng, Đơn→Don). Số đơn của thẻ đầu (81) bị mất, các số 4 bị đọc thành chữ 'A' → parser không được cho kết quả trông như đã khớp Tổng 92. Đáp án đúng đọc từ ảnh: 0_2=81, 2_4=4, 4_6=4, 6_8=1, 8_10=2. Ảnh: tests/fixtures/ocr-images/spx-giao-24-10.jpg",
+  "now": "2026-10-25",
+  "rawText": "13:42 © 0 © 3 l 45c &)\n< Chi tiét don theo ngay - 24/10\nDagiaohang Dalay Datrahang\nTat caNhomcannang v\nT6ng 92 don hang\nKhoi luong (kg) :\n0.000 - 2.001 os\nKhoi luong (kg)\nA Don ha\n2.001 - 4.001 eh Se\nKhoi luong (kg)\nA Don hi\n4.001 - 6.001 pete\nKhoi luong (kg)\n1 Don he\n6.001 - 8.001 ate ™\nKhoi lung (kg)\n2 Don he\n8.001 - 10.001 mang ©",
+  "safety": "must-not-verify",
+  "expected": {
+    "weights": null,
+    "total": 92,
+    "date": "2026-10-24"
+  }
+}

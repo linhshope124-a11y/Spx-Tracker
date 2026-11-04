@@ -1,0 +1,21 @@
+{
+  "name": "khong-co-dong-tong",
+  "source": "synthetic",
+  "note": "Không đọc được dòng Tổng → không có số đối chiếu (expectedTotal = null), vẫn đọc theo thứ tự dải.",
+  "now": "2026-10-17",
+  "rawText": "Ngày 17/10/2026\n>0 - 2 kg\n40 Đơn\n>2 - 4 kg\n15 Đơn",
+  "expected": {
+    "weights": {
+      "0_2": 40,
+      "2_4": 15,
+      "4_6": 0,
+      "6_8": 0,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": null,
+    "date": "2026-10-17"
+  }
+}

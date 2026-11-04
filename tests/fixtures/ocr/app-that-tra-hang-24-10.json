@@ -1,0 +1,21 @@
+{
+  "name": "app-that-tra-hang-24-10",
+  "source": "real",
+  "note": "Log 'Copy log' thật từ app (Tesseract.js 'vie'), ảnh 'Đã trả hàng' 24/10.",
+  "now": "2026-10-25",
+  "rawText": "1010 9 8 mm so\n— Chỉ tiết đơn theo ngày - 24/10\nĐã giao hàng. Đã lấy. Đã trả hàng\nTất cả Nhóm cânnặng  v\nTổng 2 đơn hàng\nKhối lượng (kg)\n1 Đơn hề\n0.000 - 2.001                         h hồng\nKhối lượng (kg)\n1 Đơn hề\n4.001 - 6.001                         nhang",
+  "expected": {
+    "weights": {
+      "0_2": 1,
+      "2_4": 0,
+      "4_6": 1,
+      "6_8": 0,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 2,
+    "date": "2026-10-24"
+  }
+}

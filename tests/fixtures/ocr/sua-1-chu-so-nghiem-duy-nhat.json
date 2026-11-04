@@ -1,0 +1,21 @@
+{
+  "name": "sua-1-chu-so-nghiem-duy-nhat",
+  "source": "synthetic",
+  "note": "Một chữ số đọc sai (3 thay vì 9) và chỉ có đúng một cách sửa làm tổng khớp → tự sửa.",
+  "now": "2026-10-17",
+  "rawText": "Ngày 17/10/2026\nTổng: 39\n>0 - 2 kg\n13 Đơn\n>2 - 4 kg\n20 Đơn",
+  "expected": {
+    "weights": {
+      "0_2": 19,
+      "2_4": 20,
+      "4_6": 0,
+      "6_8": 0,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 39,
+    "date": "2026-10-17"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "dong-gio-ma-van-don-bi-bo-qua",
+  "source": "synthetic",
+  "note": "Dòng có giờ (10:30), dòng bắt đầu bằng 4+ chữ số (mã vận đơn) và \"Chi tiết\" không được tính là số đơn.",
+  "now": "2026-10-17",
+  "rawText": "Ngày 17/10/2026 10:30\n2610170012345 Chi tiết\nTổng: 30\n>0 - 2 kg\n20 Đơn\n09:15\n>2 - 4 kg\n10 Đơn\nChi tiết 77",
+  "expected": {
+    "weights": {
+      "0_2": 20,
+      "2_4": 10,
+      "4_6": 0,
+      "6_8": 0,
+      "8_10": 0,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 30,
+    "date": "2026-10-17"
+  }
+}

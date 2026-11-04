@@ -1,0 +1,21 @@
+{
+  "name": "giao-24-10-chep-tay",
+  "source": "synthetic",
+  "note": "Chép tay từ ảnh thật spx-giao-24-10.jpg theo kiểu engine 'vie' (đủ dấu, mỗi thẻ: dải cân + 'N Đơn hàng' cùng hàng).",
+  "now": "2026-10-25",
+  "rawText": "15:42 mm so\n← Chi tiết đơn theo ngày - 24/10\nĐã giao hàng Đã lấy Đã trả hàng\nTất cả Nhóm cân nặng v\nTổng 92 đơn hàng\nKhối lượng (kg)\n0.000 - 2.001                         81 Đơn hàng\nKhối lượng (kg)\n2.001 - 4.001                         4 Đơn hàng\nKhối lượng (kg)\n4.001 - 6.001                         4 Đơn hàng\nKhối lượng (kg)\n6.001 - 8.001                         1 Đơn hàng\nKhối lượng (kg)\n8.001 - 10.001                        2 Đơn hàng",
+  "expected": {
+    "weights": {
+      "0_2": 81,
+      "2_4": 4,
+      "4_6": 4,
+      "6_8": 1,
+      "8_10": 2,
+      "10_12": 0,
+      "12_15": 0,
+      "over_15": 0
+    },
+    "total": 92,
+    "date": "2026-10-24"
+  }
+}
