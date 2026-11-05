@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/linhshope124-a11y/Spx-Tracker#readme",
   "dependencies": {
+    "@capacitor-community/admob": "^8.3.0",
     "@capacitor/android": "^8.6.0",
     "@capacitor/cli": "^8.6.0",
     "@capacitor/core": "^8.6.0"
