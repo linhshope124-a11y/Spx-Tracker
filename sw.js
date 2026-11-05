@@ -20,6 +20,7 @@ const CORE = [
   './icons/icon-maskable-192.png',
   './icons/icon-maskable-512.png',
   './css/style.css',
+  './js/ads.js',
   './js/backup.js',
   './js/calc.js',
   './js/cloud.js',
