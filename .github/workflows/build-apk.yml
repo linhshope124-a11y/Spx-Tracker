@@ -26,13 +26,16 @@ jobs:
     - name: Install dependencies
       run: |
         npm install
-        npm install @capacitor/core @capacitor/cli @capacitor/android
+        npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/assets sharp
 
     - name: Add Android platform (if missing)
       run: |
         if [ ! -d "android" ]; then
           npx cap add android
         fi
+
+    - name: Generate Icons
+      run: npx capacitor-assets generate --android
 
     - name: Sync Web to Android
       run: npx cap sync android
