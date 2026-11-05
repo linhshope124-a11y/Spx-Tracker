@@ -1,4 +1,4 @@
-name: Build Release APK
+name: Build APK & Release OTA
 
 on:
   push:
@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Cần quyền này để tạo Release
     steps:
     - name: Checkout Source Code
       uses: actions/checkout@v4
@@ -26,13 +28,11 @@ jobs:
     - name: Install dependencies
       run: |
         npm install
-        npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/assets sharp
+        npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/assets sharp @capgo/capacitor-updater
 
     - name: Add Android platform (if missing)
       run: |
-        if [ ! -d "android" ]; then
-          npx cap add android
-        fi
+        if [ ! -d "android" ]; then npx cap add android; fi
 
     - name: Generate Icons
       run: npx capacitor-assets generate --android
@@ -41,8 +41,7 @@ jobs:
       run: npx cap sync android
 
     - name: Decode Keystore
-      run: |
-        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/app/spx.keystore
+      run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/app/spx.keystore
 
     - name: Build Release APK
       run: |
@@ -55,3 +54,23 @@ jobs:
       with:
         name: SPX-Tracker-Release-APK
         path: android/app/build/outputs/apk/release/app-release.apk
+
+    # === TỰ ĐỘNG TẠO OTA BUNDLE ===
+    - name: Get Version
+      id: get_version
+      run: echo "VERSION=$(node -p "require('./version.json').version")" >> $GITHUB_OUTPUT
+
+    - name: Zip Web Directory for OTA
+      run: |
+        cd www
+        zip -r ../bundle.zip ./*
+        cd ..
+
+    - name: Create Release and Upload Bundle
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.get_version.outputs.VERSION }}
+        files: bundle.zip
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

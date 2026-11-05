@@ -54,6 +54,7 @@ import { showAlert, showConfirm } from './dialog.js';
 import { WEIGHT_KEYS } from './config.js';
 import { requestPrecacheTesseract } from './sw-bridge.js';
 import { initErrorHandler } from './error-handler.js';
+import { CapacitorUpdater } from '@capgo/capacitor-updater';
 import { initAds, showBanner } from './ads.js';
 
 // ================ AUTO-CLEAR INPUT ================
