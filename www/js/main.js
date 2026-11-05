@@ -1,3 +1,4 @@
+import { Capacitor } from '@capacitor/core';
 import { state, loadState, persistSettings, getSalaryConfig, setSalaryConfig } from './state.js';
 import { initTheme, toggleTheme } from './theme.js';
 import {
@@ -134,8 +135,8 @@ async function _cleanupDuplicates() {
     state.appData[type] = state.appData[type].filter(r => !ids.includes(r.id));
   });
   updateAllViews();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
+  if (Capacitor.isNativePlatform()) initAds();
+  if (Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
   await showAlert(`Đã xóa ${dups.length} bản ghi trùng lặp!`, { title: 'Hoàn tất', okText: 'OK' });
 }
 
@@ -588,8 +589,8 @@ Object.assign(window, {
       if (el) el.classList.add('active');
 
       updateAllViews();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
+  if (Capacitor.isNativePlatform()) initAds();
+  if (Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 
       const label = regionKey === 'hcm_hn'
         ? 'TP.HCM & Hà Nội (80/40)'
@@ -631,8 +632,8 @@ Object.assign(window, {
     clearTimeout(manualPointsTimer);
     clearTimeout(salaryTimer);
     updateAllViews();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
+  if (Capacitor.isNativePlatform()) initAds();
+  if (Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 
     const [y, m] = state.currentMonth.split('-');
     const taiXeNote = taiXe > 0
@@ -711,8 +712,8 @@ function _handleShortcutLaunch() {
 
   attachAutoClearInputs();
   updateAllViews();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
+  if (Capacitor.isNativePlatform()) initAds();
+  if (Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 
   initOcrCache().catch(e => console.warn('[Init] OCR cache init fail:', e));
 
