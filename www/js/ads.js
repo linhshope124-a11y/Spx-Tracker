@@ -1,8 +1,8 @@
 import { AdMob, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
 
-// MÃ TEST CỦA GOOGLE (An toàn 100%, không bị khóa tài khoản khi bấm thử)
+// MÃ TEST CỦA GOOGLE
+const BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';
 const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
-const INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712";
 
 let isAdMobReady = false;
 
@@ -23,7 +23,7 @@ export async function showBanner() {
       adId: BANNER_ID,
       adSize: BannerAdSize.ADAPTIVE_BANNER,
       position: BannerAdPosition.BOTTOM_CENTER,
-      margin: 0, // Cách đáy màn hình 0px
+      margin: 0,
     });
   } catch (e) {
     console.warn('Lỗi hiển thị banner:', e);
