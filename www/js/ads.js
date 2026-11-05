@@ -1,4 +1,5 @@
-import { AdMob, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
+import { Capacitor } from "@capacitor/core";
+import { AdMob, BannerAdPosition, BannerAdSize } from "@capacitor-community/admob";
 
 // MÃ TEST CỦA GOOGLE
 const BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';

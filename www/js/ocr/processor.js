@@ -201,7 +201,7 @@ async function _runOcrFromFiles(files, wasAppend = false) {
       return;
     }
 
-    import('../ads.js').then(m => m.showInterstitial()).catch(() => {});
+    if (window.Capacitor && window.Capacitor.isNativePlatform()) import('../ads.js').then(m => m.showInterstitial()).catch(() => {});
 
     if (autoSaved.length > 0 || duplicates.length > 0) {
       showSummaryToast(autoSaved.length, duplicates.length, 0);
