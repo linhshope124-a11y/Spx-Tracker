@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SPX Tracker</string>
+    <string name="title_activity_main">SPX Tracker</string>
+    <string name="package_name">com.linhshope.spxtracker</string>
+    <string name="custom_url_scheme">com.linhshope.spxtracker</string>
+</resources>

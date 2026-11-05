@@ -17,5 +17,25 @@
   "devDependencies": {
     "@playwright/test": "^1.56.0",
     "typescript": "^6.0.3"
+  },
+  "version": "1.0.0",
+  "description": "PWA theo dõi điểm / thu nhập tài xế SPX: nhập tay hoặc quét ảnh (OCR), lưu cục bộ, sao lưu file / GitHub Gist, chạy offline.",
+  "main": "sw.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linhshope124-a11y/Spx-Tracker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/linhshope124-a11y/Spx-Tracker/issues"
+  },
+  "homepage": "https://github.com/linhshope124-a11y/Spx-Tracker#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0"
   }
 }
