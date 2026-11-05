@@ -1,8 +1,8 @@
 import { AdMob, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
 
 // MÃ TEST CỦA GOOGLE (An toàn 100%, không bị khóa tài khoản khi bấm thử)
-const BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';
-const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
+const BANNER_ID = 'ca-app-pub-5201040729622844/3602751270';
+const INTERSTITIAL_ID = 'ca-app-pub-5201040729622844/7980979984';
 
 let isAdMobReady = false;
 

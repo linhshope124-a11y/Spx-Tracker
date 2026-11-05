@@ -4,5 +4,5 @@
     <string name="title_activity_main">SPX Tracker</string>
     <string name="package_name">com.linhshope.spxtracker</string>
     <string name="custom_url_scheme">com.linhshope.spxtracker</string>
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_app_id">ca-app-pub-5201040729622844~1630184895</string>
 </resources>
