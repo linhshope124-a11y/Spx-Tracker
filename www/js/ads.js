@@ -1,5 +1,5 @@
-import { Capacitor } from "@capacitor/core";
-import { AdMob, BannerAdPosition, BannerAdSize } from "@capacitor-community/admob";
+import { Capacitor } from '@capacitor/core';
+import { AdMob, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
 
 // MÃ TEST CỦA GOOGLE
 const BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';
@@ -8,6 +8,7 @@ const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
 let isAdMobReady = false;
 
 export async function initAds() {
+  if (!Capacitor.isNativePlatform()) return;
   try {
     await AdMob.initialize();
     isAdMobReady = true;
@@ -18,7 +19,7 @@ export async function initAds() {
 }
 
 export async function showBanner() {
-  if (!isAdMobReady) return;
+  if (!isAdMobReady || !Capacitor.isNativePlatform()) return;
   try {
     await AdMob.showBanner({
       adId: BANNER_ID,
@@ -32,7 +33,7 @@ export async function showBanner() {
 }
 
 export async function showInterstitial() {
-  if (!isAdMobReady) return;
+  if (!isAdMobReady || !Capacitor.isNativePlatform()) return;
   try {
     await AdMob.prepareInterstitial({ adId: INTERSTITIAL_ID });
     await AdMob.showInterstitial();
