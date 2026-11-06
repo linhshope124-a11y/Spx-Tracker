@@ -8,7 +8,6 @@ let isAdMobReady = false;
 
 export async function initAds() {
   // @ts-ignore
-  // @ts-ignore
   if (!window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.initialize();
@@ -20,7 +19,8 @@ export async function initAds() {
 }
 
 export async function showBanner() {
-  if (!isAdMobReady || !Capacitor.isNativePlatform()) return;
+  // @ts-ignore
+  if (!isAdMobReady || !window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.showBanner({
       adId: BANNER_ID,
@@ -34,7 +34,8 @@ export async function showBanner() {
 }
 
 export async function showInterstitial() {
-  if (!isAdMobReady || !Capacitor.isNativePlatform()) return;
+  // @ts-ignore
+  if (!isAdMobReady || !window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.prepareInterstitial({ adId: INTERSTITIAL_ID });
     await AdMob.showInterstitial();
