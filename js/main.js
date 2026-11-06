@@ -134,12 +134,6 @@ async function _cleanupDuplicates() {
     state.appData[type] = state.appData[type].filter(r => !ids.includes(r.id));
   });
   updateAllViews();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
   await showAlert(`Đã xóa ${dups.length} bản ghi trùng lặp!`, { title: 'Hoàn tất', okText: 'OK' });
 }
 
@@ -592,12 +586,6 @@ Object.assign(window, {
       if (el) el.classList.add('active');
 
       updateAllViews();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 
       const label = regionKey === 'hcm_hn'
         ? 'TP.HCM & Hà Nội (80/40)'
@@ -639,12 +627,6 @@ Object.assign(window, {
     clearTimeout(manualPointsTimer);
     clearTimeout(salaryTimer);
     updateAllViews();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 
     const [y, m] = state.currentMonth.split('-');
     const taiXeNote = taiXe > 0
@@ -723,12 +705,8 @@ function _handleShortcutLaunch() {
 
   attachAutoClearInputs();
   updateAllViews();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
-  // @ts-ignore
-  // @ts-ignore
-  if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
+  // Quảng cáo: chỉ chạy trên app native (ads.js tự kiểm tra)
+  initAds().then(() => setTimeout(showBanner, 1500));
 
   initOcrCache().catch(e => console.warn('[Init] OCR cache init fail:', e));
 

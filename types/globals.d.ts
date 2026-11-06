@@ -30,5 +30,6 @@ interface Window {
   Capacitor?: {
     isNativePlatform: () => boolean;
     getPlatform: () => string;
+    Plugins?: Record<string, any>;
   };
 }

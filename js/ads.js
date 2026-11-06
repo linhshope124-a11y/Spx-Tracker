@@ -1,39 +1,61 @@
-import { AdMob, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
+// AdMob qua Capacitor. KHÔNG import '@capacitor-community/admob' (không có bundler
+// nên trình duyệt/WebView không phân giải được). Lấy plugin từ window.Capacitor.Plugins.
 
 // MÃ TEST CỦA GOOGLE
 const BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';
 const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
 
-let isAdMobReady = false;
+let initPromise = null;
+let bannerShown = false;
 
-export async function initAds() {
-  if (!window.Capacitor || !window.Capacitor.isNativePlatform()) return;
-  try {
-    await AdMob.initialize();
-    isAdMobReady = true;
-    console.log('AdMob đã sẵn sàng');
-  } catch (e) {
-    console.warn('Lỗi khởi tạo AdMob:', e);
+function isNative() {
+  return !!(window.Capacitor && window.Capacitor.isNativePlatform());
+}
+
+function getAdMob() {
+  return window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.AdMob;
+}
+
+/** Khởi tạo AdMob đúng 1 lần. Trả về true nếu sẵn sàng. */
+export function initAds() {
+  if (!isNative()) return Promise.resolve(false);
+  if (!initPromise) {
+    initPromise = (async () => {
+      try {
+        const AdMob = getAdMob();
+        if (!AdMob) throw new Error('Plugin AdMob chưa có trong bản build native');
+        await AdMob.initialize();
+        console.log('AdMob đã sẵn sàng');
+        return true;
+      } catch (e) {
+        console.warn('Lỗi khởi tạo AdMob:', e);
+        initPromise = null;
+        return false;
+      }
+    })();
   }
+  return initPromise;
 }
 
 export async function showBanner() {
-  if (!isAdMobReady || !window.Capacitor || !window.Capacitor.isNativePlatform()) return;
+  if (bannerShown || !(await initAds())) return;
   try {
-    await AdMob.showBanner({
+    await getAdMob().showBanner({
       adId: BANNER_ID,
-      adSize: BannerAdSize.ADAPTIVE_BANNER,
-      position: BannerAdPosition.BOTTOM_CENTER,
+      adSize: 'ADAPTIVE_BANNER',
+      position: 'BOTTOM_CENTER',
       margin: 0,
     });
+    bannerShown = true;
   } catch (e) {
     console.warn('Lỗi hiển thị banner:', e);
   }
 }
 
 export async function showInterstitial() {
-  if (!isAdMobReady || !window.Capacitor || !window.Capacitor.isNativePlatform()) return;
+  if (!(await initAds())) return;
   try {
+    const AdMob = getAdMob();
     await AdMob.prepareInterstitial({ adId: INTERSTITIAL_ID });
     await AdMob.showInterstitial();
   } catch (e) {
