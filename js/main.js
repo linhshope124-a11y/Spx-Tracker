@@ -135,7 +135,9 @@ async function _cleanupDuplicates() {
   });
   updateAllViews();
   // @ts-ignore
+  // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
+  // @ts-ignore
   // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
   await showAlert(`Đã xóa ${dups.length} bản ghi trùng lặp!`, { title: 'Hoàn tất', okText: 'OK' });
@@ -591,7 +593,9 @@ Object.assign(window, {
 
       updateAllViews();
   // @ts-ignore
+  // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
+  // @ts-ignore
   // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 
@@ -636,7 +640,9 @@ Object.assign(window, {
     clearTimeout(salaryTimer);
     updateAllViews();
   // @ts-ignore
+  // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
+  // @ts-ignore
   // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 
@@ -718,7 +724,9 @@ function _handleShortcutLaunch() {
   attachAutoClearInputs();
   updateAllViews();
   // @ts-ignore
+  // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) initAds();
+  // @ts-ignore
   // @ts-ignore
   if (window.Capacitor && window.Capacitor.isNativePlatform()) setTimeout(() => showBanner(), 1500);
 

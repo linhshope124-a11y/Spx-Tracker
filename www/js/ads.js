@@ -8,6 +8,7 @@ let isAdMobReady = false;
 
 export async function initAds() {
   // @ts-ignore
+  // @ts-ignore
   if (!window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.initialize();
