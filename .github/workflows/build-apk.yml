@@ -41,13 +41,16 @@ jobs:
       run: npx cap sync android
 
     - name: Decode Keystore
-      run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/app/spx.keystore
+      run: |
+        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/app/spx.keystore
+        test -s android/app/spx.keystore || { echo "::error::KEYSTORE_BASE64 rỗng hoặc sai"; exit 1; }
+        ls -l android/app/spx.keystore
 
     - name: Build Release APK
       run: |
         cd android
         chmod +x gradlew
-        ./gradlew assembleRelease -Pandroid.injected.signing.store.file=spx.keystore -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=spx -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+        ./gradlew assembleRelease -Pandroid.injected.signing.store.file=${{ github.workspace }}/android/app/spx.keystore -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=spx -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
