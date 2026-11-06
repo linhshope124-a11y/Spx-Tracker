@@ -25,3 +25,10 @@ interface Navigator {
   /** iOS Safari: đang chạy ở chế độ màn hình chính */
   standalone?: boolean;
 }
+
+interface Window {
+  Capacitor?: {
+    isNativePlatform: () => boolean;
+    getPlatform: () => string;
+  };
+}

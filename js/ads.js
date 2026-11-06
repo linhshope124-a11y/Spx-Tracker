@@ -7,7 +7,6 @@ const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
 let isAdMobReady = false;
 
 export async function initAds() {
-  // @ts-ignore
   if (!window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.initialize();
@@ -19,7 +18,6 @@ export async function initAds() {
 }
 
 export async function showBanner() {
-  // @ts-ignore
   if (!isAdMobReady || !window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.showBanner({
@@ -34,7 +32,6 @@ export async function showBanner() {
 }
 
 export async function showInterstitial() {
-  // @ts-ignore
   if (!isAdMobReady || !window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.prepareInterstitial({ adId: INTERSTITIAL_ID });
