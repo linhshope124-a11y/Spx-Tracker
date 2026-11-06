@@ -1,4 +1,3 @@
-import { Capacitor } from '@capacitor/core';
 // =============================================================
 // OCR · processor.js
 // Điều phối OCR: xử lý 1 ảnh (nhiều lượt) → cả lô → tự lưu/đưa vào lô cần xem; điểm vào cho ảnh chọn từ máy/chia sẻ.
@@ -202,7 +201,8 @@ async function _runOcrFromFiles(files, wasAppend = false) {
       return;
     }
 
-    if (Capacitor.isNativePlatform()) import('../ads.js').then(m => m.showInterstitial()).catch(() => {});
+    // @ts-ignore
+  if (window.Capacitor && window.Capacitor.isNativePlatform()) import('../ads.js').then(m => m.showInterstitial()).catch(() => {});
 
     if (autoSaved.length > 0 || duplicates.length > 0) {
       showSummaryToast(autoSaved.length, duplicates.length, 0);

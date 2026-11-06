@@ -1,4 +1,3 @@
-import { Capacitor } from '@capacitor/core';
 import { AdMob, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
 
 // MÃ TEST CỦA GOOGLE
@@ -8,7 +7,8 @@ const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
 let isAdMobReady = false;
 
 export async function initAds() {
-  if (!Capacitor.isNativePlatform()) return;
+  // @ts-ignore
+  if (!window.Capacitor || !window.Capacitor.isNativePlatform()) return;
   try {
     await AdMob.initialize();
     isAdMobReady = true;
