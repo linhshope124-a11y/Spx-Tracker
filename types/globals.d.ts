@@ -15,6 +15,8 @@ interface Window {
   dialogCancel?: () => void;
   /** Back của Android gọi vào (js/backnav.js) */
   __spxBack?: () => boolean;
+  /** Chẩn đoán quảng cáo tạm thời (js/ads-debug.js) */
+  __adsDbg?: (msg: string) => void;
   setAllOppFilter?: (filter: string, el?: Element) => void;
   initCloudUI?: () => void;
   /** Cờ nội bộ: chạm giữ lâu đã kích hoạt, nuốt cú click kế tiếp (js/ui.js) */

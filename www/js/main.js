@@ -54,6 +54,7 @@ import { showAlert, showConfirm } from './dialog.js';
 import { WEIGHT_KEYS } from './config.js';
 import { requestPrecacheTesseract } from './sw-bridge.js';
 import { initErrorHandler } from './error-handler.js';
+import './ads-debug.js'; // TẠM THỜI — chẩn đoán quảng cáo trên màn hình
 import { initAds, showBanner } from './ads.js';
 import { initBackNav, reopenMenuIfNeeded } from './backnav.js';
 

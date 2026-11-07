@@ -6,6 +6,8 @@ const BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';
 const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
 const DEFAULT_BANNER_H = 60; // px — dùng khi plugin không báo chiều cao
 
+const dbg = (m) => { try { if (window.__adsDbg) window.__adsDbg(m); } catch (_) { /* bỏ qua */ } };
+
 let initPromise = null;
 let bannerShown = false;
 let listenersAdded = false;
@@ -35,9 +37,11 @@ function addBannerListeners(AdMob) {
   listenersAdded = true;
   try {
     AdMob.addListener('bannerAdSizeChanged', (info) => {
+      dbg('size ' + JSON.stringify(info));
       if (bannerShown) setAdHeight(normalizeHeight(info && info.height));
     });
-    AdMob.addListener('bannerAdFailedToLoad', () => setAdHeight(0));
+    AdMob.addListener('bannerAdLoaded', () => dbg('LOADED ✔'));
+    AdMob.addListener('bannerAdFailedToLoad', (err) => { dbg('FAILED ' + JSON.stringify(err)); setAdHeight(0); });
   } catch (e) {
     console.warn('Không gắn được listener banner:', e);
   }
@@ -50,12 +54,15 @@ export function initAds() {
     initPromise = (async () => {
       try {
         const AdMob = getAdMob();
+        dbg('init…');
         if (!AdMob) throw new Error('Plugin AdMob chưa có trong bản build native');
         await AdMob.initialize();
+        dbg('init OK');
         console.log('AdMob đã sẵn sàng');
         return true;
       } catch (e) {
         console.warn('Lỗi khởi tạo AdMob:', e);
+        dbg('init LỖI: ' + ((e && e.message) || e));
         initPromise = null;
         return false;
       }
@@ -69,6 +76,7 @@ export async function showBanner() {
   try {
     const AdMob = getAdMob();
     addBannerListeners(AdMob);
+    dbg('showBanner…');
     await AdMob.showBanner({
       adId: BANNER_ID,
       adSize: 'ADAPTIVE_BANNER',
@@ -76,9 +84,11 @@ export async function showBanner() {
       margin: 0,
     });
     bannerShown = true;
+    dbg('showBanner OK');
     setAdHeight(DEFAULT_BANNER_H); // sự kiện bannerAdSizeChanged (nếu có) sẽ chỉnh lại cho đúng
   } catch (e) {
     console.warn('Lỗi hiển thị banner:', e);
+    dbg('showBanner LỖI: ' + ((e && e.message) || e));
   }
 }
 
