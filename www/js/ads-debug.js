@@ -1,5 +1,5 @@
 // TẠM THỜI: hiện chẩn đoán quảng cáo ngay trên màn hình (chỉ chạy trong app Android).
-// Gỡ sau khi xong: xóa file này + dòng import './ads-debug.js' trong js/main.js.
+// Gỡ sau khi xong: xóa file này và dòng nạp ads-debug ở đầu js/main.js.
 const lines = [];
 let box = null;
 
