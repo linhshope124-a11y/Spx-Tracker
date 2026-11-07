@@ -13,6 +13,8 @@ interface Window {
   openOcrPicker?: () => void;
   dialogOk?: () => void;
   dialogCancel?: () => void;
+  /** Back của Android gọi vào (js/backnav.js) */
+  __spxBack?: () => boolean;
   setAllOppFilter?: (filter: string, el?: Element) => void;
   initCloudUI?: () => void;
   /** Cờ nội bộ: chạm giữ lâu đã kích hoạt, nuốt cú click kế tiếp (js/ui.js) */

@@ -58,6 +58,7 @@
   --sh-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
 
   --nav-h: 68px;
+  --ad-h: 0px; /* chiều cao banner quảng cáo, ads.js cập nhật */
 }
 
 [data-theme="dark"] {
@@ -122,7 +123,7 @@ body {
   font-size: 14px;
   line-height: 1.45;
   min-height: 100vh;
-  padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bottom, 16px));
+  padding-bottom: calc(var(--nav-h) + 24px + var(--ad-h, 0px) + env(safe-area-inset-bottom, 16px));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background 0.2s, color 0.2s;
@@ -401,7 +402,7 @@ body {
 /* ============ BOTTOM NAV ============ */
 .bottom-nav {
   position: fixed;
-  bottom: 0; left: 0; right: 0;
+  bottom: var(--ad-h, 0px); left: 0; right: 0;
   background: var(--surface);
   border-top: 1px solid var(--border);
   padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px));
@@ -1382,6 +1383,7 @@ details.income-section[open] .income-chevron { transform: rotate(180deg); }
 .modal-shade {
   position: fixed;
   inset: 0;
+  padding-bottom: var(--ad-h, 0px);
   background: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -1399,7 +1401,7 @@ details.income-section[open] .income-chevron { transform: rotate(180deg); }
   border: 1px solid var(--border);
   border-bottom: none;
   box-shadow: var(--sh-lg);
-  max-height: 88vh;
+  max-height: calc(88vh - var(--ad-h, 0px));
   display: flex;
   flex-direction: column;
   animation: slideUp 0.22s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2033,7 +2035,7 @@ a.menu-item:visited { color: var(--text-1); }
 /* ============ TOAST ============ */
 .app-toast {
   position: fixed;
-  bottom: calc(var(--nav-h) + 40px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(var(--nav-h) + 40px + var(--ad-h, 0px) + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%) translateY(150px);
   background: var(--text-1);
@@ -2060,7 +2062,7 @@ a.menu-item:visited { color: var(--text-1); }
 /* ============ UPDATE BANNER ============ */
 .update-banner {
   position: fixed;
-  bottom: calc(var(--nav-h) + 20px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(var(--nav-h) + 20px + var(--ad-h, 0px) + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%) translateY(180px);
   background: var(--surface);
@@ -2499,7 +2501,7 @@ a.menu-item:visited { color: var(--text-1); }
 /* ============ UNDO TOAST (js/undo.js) ============ */
 .undo-toast {
   position: fixed;
-  bottom: calc(var(--nav-h) + 40px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(var(--nav-h) + 40px + var(--ad-h, 0px) + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%) translateY(150px);
   display: flex; align-items: center; gap: 14px;

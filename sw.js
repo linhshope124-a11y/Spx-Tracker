@@ -5,7 +5,7 @@
 // ⚠️ MỖI LẦN SỬA FILE TRONG CORE → BUMP CACHE VERSION
 // =============================================================
 
-const CACHE       = 'spx-tracker-v2.12';    // tự sinh bởi scripts/sync.mjs (nguồn: version.json)
+const CACHE       = 'spx-tracker-v2.13';    // tự sinh bởi scripts/sync.mjs (nguồn: version.json)
 const TESS_CACHE  = 'spx-tesseract-v1';    // giữ nguyên — Tesseract không đổi
 const SHARE_CACHE = 'spx-shared-files';    // giữ nguyên — dữ liệu tạm
 
@@ -21,6 +21,7 @@ const CORE = [
   './icons/icon-maskable-512.png',
   './css/style.css',
   './js/ads.js',
+  './js/backnav.js',
   './js/backup.js',
   './js/calc.js',
   './js/cloud.js',

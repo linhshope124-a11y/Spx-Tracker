@@ -1105,5 +1105,12 @@ document.addEventListener('keydown', e => {
 })();
 </script>
 
+<script>
+// spx-history-back: quay lại đúng lịch sử (về Menu thay vì mở thêm 1 trang index mới)
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest ? e.target.closest('a[href="./index.html"]') : null;
+  if (a && history.length > 1) { e.preventDefault(); history.back(); }
+});
+</script>
 </body>
 </html>

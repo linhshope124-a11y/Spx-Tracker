@@ -55,6 +55,7 @@ import { WEIGHT_KEYS } from './config.js';
 import { requestPrecacheTesseract } from './sw-bridge.js';
 import { initErrorHandler } from './error-handler.js';
 import { initAds, showBanner } from './ads.js';
+import { initBackNav, reopenMenuIfNeeded } from './backnav.js';
 
 // ================ AUTO-CLEAR INPUT ================
 function attachAutoClearInputs() {
@@ -705,6 +706,9 @@ function _handleShortcutLaunch() {
 
   attachAutoClearInputs();
   updateAllViews();
+  // Back kiểu Android: đóng popup trước; từ trang phụ về thì mở lại Menu
+  initBackNav();
+  reopenMenuIfNeeded(openMenuModal);
   // Quảng cáo: chỉ chạy trên app native (ads.js tự kiểm tra)
   initAds().then(() => setTimeout(showBanner, 1500));
 

@@ -9,9 +9,13 @@
         h1 { color: #ff5722; }
         h2 { margin-top: 30px; }
         a { color: #2563eb; }
+        body { padding-bottom: 90px; } /* chừa chỗ cho banner quảng cáo ở đáy */
+        .back-bar { position: sticky; top: 0; z-index: 10; background: #fff; margin: -20px -20px 16px; padding: 14px 20px; border-bottom: 1px solid #eee; }
+        .back-bar a { display: inline-block; color: #ff5722; font-weight: 600; text-decoration: none; padding: 6px 0; }
     </style>
 </head>
 <body>
+    <div class="back-bar"><a href="./index.html">← Quay lại ứng dụng</a></div>
     <h1>Chính sách bảo mật của SPX Tracker</h1>
     <p>Cập nhật lần cuối: 05/11/2026</p>
 
@@ -43,5 +47,12 @@
     <h2>5. Liên hệ</h2>
     <p>Nếu bạn có bất kỳ câu hỏi nào về chính sách bảo mật này hoặc cần hỗ trợ kỹ thuật, vui lòng liên hệ với chúng tôi qua email:</p>
     <p><strong>Email:</strong> <a href="mailto:contact.spxtracker@gmail.com">contact.spxtracker@gmail.com</a></p>
+<script>
+// spx-history-back: quay lại đúng lịch sử (về Menu thay vì mở thêm 1 trang index mới)
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest ? e.target.closest('a[href="./index.html"]') : null;
+  if (a && history.length > 1) { e.preventDefault(); history.back(); }
+});
+</script>
 </body>
 </html>
