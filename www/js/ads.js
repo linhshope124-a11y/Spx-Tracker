@@ -1,7 +1,4 @@
-// AdMob qua Capacitor. KHÔNG import '@capacitor-community/admob' (không có bundler
-// nên trình duyệt/WebView không phân giải được). Lấy plugin từ window.Capacitor.Plugins.
-
-// MÃ TEST CỦA GOOGLE
+// AdMob qua Capacitor. KHÔNG import trực tiếp thư viện Native.
 const BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';
 const INTERSTITIAL_ID = 'ca-app-pub-3940256099942544/1033173712';
 
@@ -16,7 +13,6 @@ function getAdMob() {
   return window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.AdMob;
 }
 
-/** Khởi tạo AdMob đúng 1 lần. Trả về true nếu sẵn sàng. */
 export function initAds() {
   if (!isNative()) return Promise.resolve(false);
   if (!initPromise) {

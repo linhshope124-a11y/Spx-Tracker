@@ -5,7 +5,7 @@
 // ⚠️ MỖI LẦN SỬA FILE TRONG CORE → BUMP CACHE VERSION
 // =============================================================
 
-const CACHE       = 'spx-tracker-v2.11';    // tự sinh bởi scripts/sync.mjs (nguồn: version.json)
+const CACHE       = 'spx-tracker-v2.12';    // tự sinh bởi scripts/sync.mjs (nguồn: version.json)
 const TESS_CACHE  = 'spx-tesseract-v1';    // giữ nguyên — Tesseract không đổi
 const SHARE_CACHE = 'spx-shared-files';    // giữ nguyên — dữ liệu tạm
 
